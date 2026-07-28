@@ -18,19 +18,20 @@ Run this from the command line as follows:
 """
 
 import re
-import pandas as pd
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
 
-# Import our custom functions
-from data_processing.ingestion import load_csv, load_json, load_excel
+import pandas as pd
+
 from data_processing.cleaning import (
-    remove_duplicates,
     handle_missing_values,
+    remove_duplicates,
     standardise_dates,
 )
-from data_processing.validation import validate_isbn
 
+# Import our custom functions
+from data_processing.ingestion import load_csv, load_excel, load_json
+from data_processing.validation import validate_isbn
 
 # ============================================
 # CONFIGURATION
@@ -112,7 +113,7 @@ def process_circulation_data(warnings):
     input_missing = df_clean.isnull().sum().sum()
     df_clean = handle_missing_values(df_clean, strategy='drop')
     output_missing = df_clean.isnull().sum().sum()
-    print(f"  - Dropped rows with missing values")
+    print("  - Dropped rows with missing values")
     if input_missing > 0 and output_missing == input_missing:
         warnings.append(f"Circulation: handle_missing_values() left {input_missing:,} missing values unchanged - is it implemented?")
 
@@ -329,7 +330,7 @@ def run_pipeline():
         return results
 
     except Exception as e:
-        print(f"\n[ERROR] Pipeline failed with error: {str(e)}")
+        print(f"\n[ERROR] Pipeline failed with error: {e!s}")
         print("  - Check your data files exist")
         print("  - Check your functions are working")
         raise
