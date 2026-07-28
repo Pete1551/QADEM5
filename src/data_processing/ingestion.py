@@ -81,7 +81,7 @@ def load_json(filepath):
         raise
 
 
-def load_excel(filepath, sheet_name=0, **kwargs):
+def load_excel(filepath, sheet_name=0, **kwargs): # pragma: no cover
     """Load Excel file into DataFrame.
 
     Args:

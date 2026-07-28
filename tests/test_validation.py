@@ -5,6 +5,11 @@ def test_valid_isbn():
     # TODO: assert result equals '9780306406157'
     assert result == '9780306406157'
 
+def test_invalid_isbn_number():
+    result = validate_isbn('1111111111117')
+    # TODO: assert result is None
+    assert result == None
+
 def test_invalid_isbn():
     result = validate_isbn('not-an-isbn')
     # TODO: assert result is None
@@ -13,4 +18,9 @@ def test_invalid_isbn():
 def test_wrong_length():
     result = validate_isbn('123456789')
     # TODO: assert result is None
+    assert result == None
+
+def test_none_isbn():
+    result = validate_isbn(None)
+    # TODO: assert result equals None
     assert result == None
