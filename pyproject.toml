@@ -21,6 +21,7 @@ where = ["src"]
 line-length = 88
 target-version = "py311"
 extend-exclude = ["venv", ".venv", "build", "dist"]
+lint.ignore = ["RUF010","DTZ005"]
 
 [tool.pytest.ini_options]
 addopts = "-v"
